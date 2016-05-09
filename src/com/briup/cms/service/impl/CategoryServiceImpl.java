@@ -15,13 +15,9 @@ public class CategoryServiceImpl implements ICategoryService {
 		categoryDao.save(category);
 	}
 
+	@Override
 	public List<Category> list() {
-		List<Category> list = new ArrayList<Category>();
-		list = this.getCategoryDao().findAll();
-		return list;
-	}
-	public CategoryDao getCategoryDao(){
-		return categoryDao;
+		return null;
 	}
 
 }
