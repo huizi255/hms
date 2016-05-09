@@ -2,13 +2,17 @@ package com.briup.cms.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.struts2.convention.annotation.Result;
 
 import com.briup.cms.bean.Category;
 import com.briup.cms.common.ConnectionFactory;
 
 /**
- * @author huizi
+ * @author huizi;
  * 关于栏目信息与数据库交互的类
  * */
 public class CategoryDao {
@@ -38,7 +42,31 @@ public class CategoryDao {
 	 * return所有的栏目信息
 	 * */
 	public List<Category> findAll(){
-		return null;
+		List<Category> list = new ArrayList<Category>();
+		try {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try{
+				conn = ConnectionFactory.getConn();
+				String sql = "select * from t_category";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.executeQuery();
+				while(rs.next()){
+					Long id = rs.getLong("id");
+					String name = rs.getString("name");
+					String code = rs.getString("code");
+					Category c = new Category(name, code);
+					c.setId(id);
+					list.add(c);
+				}
+			}finally{
+				ConnectionFactory.close(rs, pstmt, conn);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
 		
 	}
 

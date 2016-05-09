@@ -20,7 +20,7 @@ public class CategoryAction extends ActionSupport{
 	
 	@Action(value="AddCategory")
 	public void AddCategory(){
-		Category category = new Category(null,name, code);
+		Category category = new Category(name,code);
 		categoryService.save(category);
 	}
 
