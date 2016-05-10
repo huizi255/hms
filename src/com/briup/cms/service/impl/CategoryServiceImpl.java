@@ -20,4 +20,9 @@ public class CategoryServiceImpl implements ICategoryService {
 		return list;
 	}
 
+	@Override
+	public void delete(Long id) {
+		categoryDao.delete(id);
+	}
+
 }

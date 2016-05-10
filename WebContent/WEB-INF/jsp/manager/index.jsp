@@ -16,6 +16,7 @@
 <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
 <script type="text/javascript"  src="../theme/1/js/base.js"></script>
 <script type="text/javascript">
+//在右边区域无刷新显示页面
 $(function(){
 	$(".baseUI li").on("click",function(){
 		var url = $(this).attr("url");
@@ -45,10 +46,10 @@ $(function(){
                     <li url="toCategoryManager.action">
                     <a href="#"><em class="base_userset"></em><span>栏目管理</span></a>
                     </li>
-                    <li url="">
+                    <li url="toMessagePublish.action">
                     <a href="#"><em class="base_roll"></em><span>信息发布</span></a>
                     </li>
-                    <li url="">
+                    <li url="toMessageManager.action">
                     <a href="#"><em class="base_sys"></em><span>信息管理</span></a>
                     </li>
                     <li url="toAddStudent.action">

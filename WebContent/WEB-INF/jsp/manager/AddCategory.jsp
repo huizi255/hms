@@ -13,7 +13,17 @@ $(function(){
 	  });
  });
 </script>
-<h1>添加栏目</h1>
+<style type="text/css">
+  h1{
+    color:orange;
+  }
+  form{
+    font-size:15px;
+    padding-left:20px;
+    line-height:20px;
+  }
+</style>
+<h1 align="center">添加栏目</h1>
 <hr>
 <form action="AddCategory.action" method="post" id="addCategoryForm">
        栏目名称：<input type="text" name="name"><br>

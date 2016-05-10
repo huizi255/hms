@@ -17,13 +17,27 @@ public class CategoryAction extends ActionSupport{
                                = new CategoryServiceImpl();
     private String name;
     private String code;
+    private Long id;
 	
+    /**
+     * @author huizi;
+     * 添加栏目功能；
+     * */
 	@Action(value="AddCategory")
 	public void AddCategory(){
 		Category category = new Category(name,code);
 		categoryService.save(category);
 	}
 
+	/**
+	 * @author huizi;
+	 * 删除栏目功能；
+	 * */
+	@Action(value="delCategory")
+	public void delCategory(){
+		categoryService.delete(id);
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -40,4 +54,11 @@ public class CategoryAction extends ActionSupport{
 		this.code = code;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 }

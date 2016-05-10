@@ -17,7 +17,7 @@ import com.briup.cms.common.ConnectionFactory;
  * */
 public class CategoryDao {
 	/**
-	 * 将Category对象中栏目保存到数据库中
+	 * 将Category对象中栏目保存到数据库中,添加栏目功能；
 	 * */
 	public void save(Category category){
 		try {
@@ -70,4 +70,25 @@ public class CategoryDao {
 		
 	}
 
+	/**
+	 * 通过id删除栏目信息
+	 * */
+	public void delete(Long id){
+		try {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try{
+				conn = ConnectionFactory.getConn();
+				String sql = "delete from t_category where id=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setLong(1, id);
+		        pstmt.executeUpdate();		
+	   		}finally{
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
