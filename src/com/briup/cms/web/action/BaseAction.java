@@ -1,6 +1,5 @@
 package com.briup.cms.web.action;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.struts2.convention.annotation.Action;
@@ -21,6 +20,9 @@ public class BaseAction extends ActionSupport {
 	 * 跳转到首页
 	 * ip:port/命名空间/url
 	 * http://localhost:8888/toIndex.action
+	 * */
+	/**
+	 * 调用service层方法，查询所有栏目信息，并把值赋给categoryList；
 	 * */
 	@Action(value="toIndex",results={
 			@Result(name="success",location="/WEB-INF/jsp/index.jsp")})
@@ -49,12 +51,12 @@ public class BaseAction extends ActionSupport {
 		return "success";
 	}
 
-	public ICategoryService getCategoryService() {
-		return categoryService;
+	public List<Category> getCategoryList() {
+		return categoryList;
 	}
 
-	public void setCategoryService(ICategoryService categoryService) {
-		this.categoryService = categoryService;
+	public void setCategoryList(List<Category> categoryList) {
+		this.categoryList = categoryList;
 	}
-	
+
 }

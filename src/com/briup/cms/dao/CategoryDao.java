@@ -51,7 +51,7 @@ public class CategoryDao {
 				conn = ConnectionFactory.getConn();
 				String sql = "select * from t_category";
 				pstmt = conn.prepareStatement(sql);
-				pstmt.executeQuery();
+				rs = pstmt.executeQuery();
 				while(rs.next()){
 					Long id = rs.getLong("id");
 					String name = rs.getString("name");

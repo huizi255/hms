@@ -1,6 +1,5 @@
 package com.briup.cms.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.briup.cms.bean.Category;
@@ -17,7 +16,8 @@ public class CategoryServiceImpl implements ICategoryService {
 
 	@Override
 	public List<Category> list() {
-		return null;
+		List<Category> list = categoryDao.findAll();
+		return list;
 	}
 
 }
