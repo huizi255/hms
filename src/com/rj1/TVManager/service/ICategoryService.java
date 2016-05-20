@@ -13,4 +13,7 @@ public interface ICategoryService {
     void delete(Long id);
     //通过修改栏目
     void update(Category category);
+    //通过id查询栏目信息
+    Category findById(Long id);
+    //修改栏目信息
 }

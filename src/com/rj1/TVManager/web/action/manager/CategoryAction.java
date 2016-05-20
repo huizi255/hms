@@ -1,6 +1,7 @@
 package com.rj1.TVManager.web.action.manager;
 
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Result;
 
 import com.rj1.TVManager.bean.Category;
 import com.rj1.TVManager.service.ICategoryService;
@@ -18,7 +19,7 @@ public class CategoryAction extends ActionSupport{
     private String name;
     private String code;
     private Long id;
-	
+	private Category category;
     /**
      * @author huizi;
      * 添加栏目功能；
@@ -42,11 +43,23 @@ public class CategoryAction extends ActionSupport{
 	 * @author huizi;
 	 * 修改栏目；
 	 * */
-	@Action(value="updCategory")
-	public void updCategory(){
-		Category category = new Category();
-		categoryService.update(category);;
+	@Action("UpdCategory")  //value="UpdCategory"，value可省略
+	public void UpdCategory(){
+		Category category = new Category(name, code);
+		category.setId(id);
+		categoryService.update(category);
 	}
+	/**
+	 * 跳转到修改栏目界面
+	 * */
+	@Action(value="toUpdCategory",results={
+			@Result(name="success",location="/WEB-INF/jsp/manager/UpdCategory.jsp")})
+	public String toUpdCategory(){
+		category = categoryService.findById(id);
+		return "success";
+		
+	}
+	
 	
 	public String getName() {
 		return name;
@@ -70,5 +83,13 @@ public class CategoryAction extends ActionSupport{
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 }

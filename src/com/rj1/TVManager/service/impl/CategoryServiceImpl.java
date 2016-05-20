@@ -30,4 +30,9 @@ public class CategoryServiceImpl implements ICategoryService {
 		categoryDao.update(category);
 	}
 
+	@Override
+	public Category findById(Long id) {
+		return categoryDao.findById(id);
+	}
+
 }

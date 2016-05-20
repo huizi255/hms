@@ -55,6 +55,15 @@ $(function(){
                     <li url="toAddStudent.action">
                     <a href="#"><em class="base_sys"></em><span>添加学生</span></a>
                     </li>
+                     <li url="toMoviePublish.action">
+                    <a href="#"><em class="base_roll"></em><span>视频发布</span></a>
+                    </li>
+                    <li url="toMovieManager.action">
+                    <a href="#"><em class="base_sys"></em><span>视频管理</span></a>
+                    </li>
+                    <li url="toMemberManager.action">
+                    <a href="#"><em class="base_sys"></em><span>会员管理</span></a>
+                    </li>
                 </ul>
             </div>
             <!-- -------这是我们的内容区-------- -->>

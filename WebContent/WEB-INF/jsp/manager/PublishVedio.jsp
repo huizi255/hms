@@ -4,7 +4,7 @@
     <!-- -------这是jquery.form的异步提交-------- -->
 <script>
 $(function(){
-	var form = $("#addArticleForm");
+	var form = $("#addVedioForm");
 	form.off();
 	  form.on("submit",function(){
 		 form.ajaxSubmit(function(){
@@ -25,18 +25,18 @@ $(function(){
     line-height:20px;
   }
 </style>
-<h1 align="center">文章发布</h1>
+<h1 align="center">视频发布</h1>
 <hr>
-<form action="AddArticle.action" method="post" id="addArticleForm">
-       新闻标题：<input type="text" name="title"><br>
-       标题作者：<input type="text" name="author"><br>
+<form action="AddVedio.action" method="post" id="addVedioForm">
+       视频名称：<input type="text" name="name"><br>
+       视频类型：<input type="text" name="type"><br>
+       视频大小：<input type="text" name="memory"><br>
          所属栏目：<select name="c_id">
             <option value="">请选择</option>
             <c:forEach items="${categoryList }" var="c">
             <option value="${c.id }">${c.name }</option>
             </c:forEach>
            </select><br>
-          内容：
-          <textarea name="content" rows="10" cols="30"></textarea><br>
+        简介：  <textarea name="content" rows="10" cols="20"></textarea><br>   
        <input type="submit" value="添加"/>
 </form>

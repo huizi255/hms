@@ -67,6 +67,35 @@ public class CategoryDao {
 		return list;
 		
 	}
+	/**
+	 * 通过id查询栏目信息
+	 * */
+	public Category findById(Long id){
+		Category category = null;
+		try {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try{
+				conn = ConnectionFactory.getConn();
+				String sql = "select * from t_category where id=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setLong(1, id);
+				rs = pstmt.executeQuery();
+				while(rs.next()){
+					String name = rs.getString("name");
+					String code = rs.getString("code");
+					category= new Category(name, code);
+					category.setId(id);
+				}
+			}finally{
+				ConnectionFactory.close(rs, pstmt, conn);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return category;
+	}
 
 	/**
 	 * 通过id删除栏目信息
@@ -90,7 +119,7 @@ public class CategoryDao {
 		}
 	}
 	/**
-	 * 通过id修改
+	 * 修改栏目
 	 * */
 	public void update(Category category){
 		try {
@@ -98,10 +127,11 @@ public class CategoryDao {
 			PreparedStatement pstmt = null;
 			try{
 				conn = ConnectionFactory.getConn();
-				String sql = "update t_category set name=? where id=?";
+				String sql = "update t_category set name=?,code=? where id=?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1,category.getName());
-				pstmt.setLong(2, category.getId());
+				pstmt.setString(2, category.getCode());
+				pstmt.setLong(3, category.getId());
 				pstmt.executeUpdate();
 			}finally{
                 ConnectionFactory.close(null, pstmt, conn);				
