@@ -139,8 +139,7 @@ public class ArticleDao {
 			PreparedStatement pstmt = null;
 			try{
 				conn = ConnectionFactory.getConn();
-				String sql = "update t_category set title=?,author=?"
-						+ "content=?,clicksTimes=? where id=?";
+				String sql = "update t_article set title=?,author=?,content=?,clicksTimes=? where id=?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1,article.getTitle());
 				pstmt.setString(2, article.getAuthor());

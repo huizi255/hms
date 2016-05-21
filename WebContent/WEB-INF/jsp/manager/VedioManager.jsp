@@ -44,13 +44,9 @@
 <script>
   $(".upd").off;
   $(".upd").on("click",function(){
-	 
 	  var id = $(this).attr("val");
-	  $.post("updCategory.action",{id:id},function(){
-			$(".baseUI li:contains('信息管理')").trigger("click");
-			//alert("修改成功")
-		})
-  });
+			  $(".right").load("toUpdVedio.action",{id:id});
+		});
   
   $(".del").off;
   $(".del").on("click",function(){

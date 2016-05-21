@@ -14,10 +14,9 @@ public class Vedio {
 	public Vedio() {
 		
 	}
-	public Vedio(Long id, String name, String type, Long memory,
+	public Vedio(String name, String type, Long memory,
 			Date publisureDate, Long c_id, String content) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.type = type;
 		this.memory = memory;

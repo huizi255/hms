@@ -25,4 +25,14 @@ public class VedioServiceImpl implements IVedioService{
 		vedioDao.delete(id);
 	}
 
+	@Override
+	public Vedio findById(Long id) {
+		return vedioDao.findById(id);
+	}
+
+	@Override
+	public void update(Vedio vedio) {
+		vedioDao.update(vedio);
+	}
+
 }

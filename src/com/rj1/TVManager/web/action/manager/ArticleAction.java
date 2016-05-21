@@ -6,7 +6,6 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 
 import com.rj1.TVManager.bean.Article;
-import com.rj1.TVManager.bean.Category;
 import com.rj1.TVManager.service.IArticleService;
 import com.rj1.TVManager.service.impl.ArticleServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
@@ -59,8 +58,13 @@ public class ArticleAction extends ActionSupport{
 	 * */
 	@Action("UpdArticle")  //value="UpdCategory"，value可省略
 	public void UpdArticle(){
-		Article article = new Article(title, author, content, publisureDate, clicksTimes, c_id);
+		Article article = new Article();
 		article.setId(id);
+		article.setTitle(title);
+		article.setAuthor(author);
+		article.setContent(content);
+		article.setClicksTimes(clicksTimes);
+		System.out.println(article);
 		articleService.update(article);
 	}
 

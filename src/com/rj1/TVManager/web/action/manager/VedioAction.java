@@ -3,6 +3,7 @@ package com.rj1.TVManager.web.action.manager;
 import java.util.Date;
 
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Result;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.rj1.TVManager.bean.Vedio;
@@ -13,6 +14,7 @@ public class VedioAction extends ActionSupport{
 
 	private static final long serialVersionUID = 1L;
 	private IVedioService vedioService = new VedioServiceImpl();
+	private Vedio vedio;
 	private Long id;
 	private String name;  //名称
 	private String type;  //类型（avi，RMVB）
@@ -42,6 +44,28 @@ public class VedioAction extends ActionSupport{
 	@Action("delVedio")
 	public void delVedio(){
 		vedioService.delete(id);
+	}
+	/**
+	 * 跳转到修改视频界面
+	 * */
+	@Action(value="toUpdVedio",results={
+			@Result(name="success",location="/WEB-INF/jsp/manager/UpdVedio.jsp")})
+	public String toUpdVedio(){
+		vedio = vedioService.findById(id);
+		return "success";
+	}
+	/**
+	 * 视频的修改
+	 * */
+	@Action("updVedio")
+	public void updVedio(){
+		Vedio vedio = new Vedio();
+		vedio.setId(id);
+		vedio.setName(name);
+		vedio.setType(type);
+		vedio.setMemory(memory);
+		vedio.setContent(content);
+		vedioService.update(vedio);
 	}
 
 	public Long getId() {
@@ -98,6 +122,12 @@ public class VedioAction extends ActionSupport{
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public Vedio getVedio() {
+		return vedio;
+	}
+	public void setVedio(Vedio vedio) {
+		this.vedio = vedio;
 	}
 
 }

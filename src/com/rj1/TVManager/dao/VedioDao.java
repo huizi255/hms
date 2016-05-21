@@ -101,4 +101,57 @@ public class VedioDao {
            e.printStackTrace();
 		}
 	}
+	//通过id查询视频信息
+	public Vedio findById(Long id){
+		Vedio vedio = null;
+		try {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			 try{
+				 conn = ConnectionFactory.getConn();
+				 String sql = "select * from t_vedio where id=?";
+				 pstmt = conn.prepareStatement(sql);
+				 pstmt.setLong(1, id);
+				 rs = pstmt.executeQuery();
+				 while(rs.next()){
+					 String name = rs.getString("name");
+					  String type = rs.getString("type");
+					  Long memory = rs.getLong("memory");
+					  String content = rs.getString("content");
+					  Date date = rs.getDate("publisureDate");
+					  Long c_id = rs.getLong("c_id");
+					  vedio = new Vedio(name, type, memory, date, c_id, content);
+					  vedio.setId(id);
+				 }
+			 }finally{
+				 ConnectionFactory.close(rs, pstmt, conn);
+			 }
+		} catch (Exception e) {
+           e.printStackTrace();
+		}
+		return vedio;
+	}
+	//修改视频信息
+	public void update(Vedio vedio){
+		try {
+			Connection conn = null;
+			PreparedStatement pstmt =null;
+			try{
+				conn =ConnectionFactory.getConn();
+				String sql="update t_vedio set name=?,type=?,memory=?,content=? where id=?";
+				pstmt =conn.prepareStatement(sql);
+				pstmt.setString(1,vedio.getName());
+				pstmt.setString(2, vedio.getType());
+				pstmt.setLong(3, vedio.getMemory());
+				pstmt.setString(4, vedio.getContent());
+				pstmt.setLong(5, vedio.getId());
+				pstmt.executeUpdate();
+			}finally{
+				ConnectionFactory.close(null, pstmt, conn);
+			}
+		} catch (Exception e) {
+           e.printStackTrace();
+		}
+	}
 }

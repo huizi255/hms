@@ -32,8 +32,7 @@ $(function(){
     <input type="hidden" name="id" value="${article.id }">
        新闻标题：<input type="text" name="title" value="${article.title }"><br>
        标题作者：<input type="text" name="author" value="${article.author}"><br>
-          内容：
-          <textarea name="content" rows="10" cols="30" value="${article.content}"></textarea><br>
+          内容：<textarea cols="20" rows="4" name="content">${article.content}</textarea><br>
       点击次数：<input type="text" name="clicksTimes" value="${article.clicksTimes }"><br>
        <input type="submit" value="提交"/>
 </form>

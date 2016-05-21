@@ -45,10 +45,8 @@
   $(".upd").off;
   $(".upd").on("click",function(){
 	  var id = $(this).attr("val");
-	  $.post("updCategory.action",{id:id},function(){
 		  $(".right").load("toUpdArticle.action",{id:id});
 		});
-  });
   
   $(".del").off;
   $(".del").on("click",function(){
