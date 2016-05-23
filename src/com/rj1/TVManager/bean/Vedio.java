@@ -66,5 +66,10 @@ public class Vedio {
 	public void setContent(String content) {
 		this.content = content;
 	}
-
+	@Override
+	public String toString() {
+		return "Vedio [id=" + id + ", name=" + name + ", type=" + type
+				+ ", memory=" + memory + ", publisureDate=" + publisureDate
+				+ ", c_id=" + c_id + ", content=" + content + "]";
+	}
 }

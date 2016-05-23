@@ -11,9 +11,57 @@ import com.rj1.TVManager.bean.Vedio;
 import com.rj1.TVManager.common.ConnectionFactory;
 
 public class VedioDao {
-	/**
-	 * 插入vedio值
-	 * */
+	//通过名字，id，c_id查询所有视频信息
+	public List<Vedio> query(Long id,String name,Long c_id){
+		List<Vedio> list = new ArrayList<Vedio>();
+		try {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try{
+				conn = ConnectionFactory.getConn();
+				String sql = "select * from t_vedio where 1=1 ";
+				if(id!=null){
+					sql +="and id = "+id;
+				}
+				if(name!=null){
+					sql +="and name like '"+name+"'";
+				}
+				if(c_id!=null){
+					sql +="and c_id = "+c_id;
+				}
+				System.out.println(sql);
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				while(rs.next()){
+					Long did = rs.getLong("id");
+					String dname = rs.getString("name");
+					String type = rs.getString("type");
+					Long memory = rs.getLong("memory");
+					Date publisureDate = rs.getDate("publisureDate");
+					Long dc_id = rs.getLong("c_id");
+					String content = rs.getString("content");
+					
+					Vedio vedio = new Vedio();
+					vedio.setId(did);
+					vedio.setName(dname);
+					vedio.setType(type);
+					vedio.setMemory(memory);
+					vedio.setPublisureDate(publisureDate);
+					vedio.setC_id(dc_id);
+					vedio.setContent(content);
+					list.add(vedio);
+				}
+			}finally{
+				ConnectionFactory.close(rs, pstmt, conn);
+			}
+		} catch (Exception e) {
+            e.printStackTrace();
+		}
+		return list;
+	}
+	
+	//添加视频
 	public void save(Vedio vedio){
 		try {
 			Connection conn = null;

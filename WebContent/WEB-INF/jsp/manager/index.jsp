@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>2-1-1资源管理</title>
+<title>视频资源管理</title>
 <link rel="stylesheet" type="text/css" href="../theme/1/css/common.css">
 <link rel="stylesheet" type="text/css" href="../theme/1/css/style.css">
 <link rel="stylesheet" type="text/css" href="../theme/1/css/table.css">
@@ -22,6 +22,7 @@ $(function(){
 		var url = $(this).attr("url");
 		$(".right").load(url);
 	});
+	$(".baseUI li").filter(":first").trigger("click");
 });
 </script>
 </head>
@@ -34,6 +35,8 @@ $(function(){
             <div class="t_sign">
             	<span>你好，管理员</span><a href="#" class="t_exit">退出</a>
             </div>
+            <div style="position: absolute;top:10px;right:2px;">
+            <a href="../toIndex.action" target="_blank">跳转到前台页面</a></div>
         </div>
     </div>
     <div id="cont">
@@ -60,9 +63,6 @@ $(function(){
                     </li>
                     <li url="toMovieManager.action">
                     <a href="#"><em class="base_sys"></em><span>视频管理</span></a>
-                    </li>
-                    <li url="toMemberManager.action">
-                    <a href="#"><em class="base_sys"></em><span>会员管理</span></a>
                     </li>
                 </ul>
             </div>

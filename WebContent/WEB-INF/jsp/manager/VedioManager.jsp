@@ -14,7 +14,7 @@
     font-size:16px;
   }
 </style>    
-<h1>信息管理</h1>
+<h1>视频管理</h1>
 <hr>
 <table border="1" style="width:100%;border-collapse:collapse;margin-top:10px">
 <tr>
